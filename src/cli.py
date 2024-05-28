@@ -17,7 +17,7 @@ if __name__ == "__main__":
     """
     print(help)
 
-    seconds = 60
+    seconds = 10
     while True:
         user_input = input(">>> ")
 
@@ -30,9 +30,9 @@ if __name__ == "__main__":
             seconds = args.seconds
         elif args.command == "start":
             timer = Timer(seconds)
-            timer_thread = threading.Thread(target=timer.start)
+            timer_thread = threading.Timer(interval=timer.get_time(), function=timer.start)
             timer_thread.start()
         elif args.command == "stop":
-            timer.stop()
+            timer_thread.cancel()
         elif args.command == "exit":
             sys.exit("Exiting...")
