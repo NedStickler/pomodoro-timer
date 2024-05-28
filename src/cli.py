@@ -6,7 +6,7 @@ from timer import Timer
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest="command")
-    length_parser = subparsers.add_parser("length")
+    length_parser = subparsers.add_parser("set")
     length_parser.add_argument("seconds", nargs="?", type=int)
     subparsers.add_parser("start")
     subparsers.add_parser("stop")
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     """
     print(help)
 
-    timer = Timer(25)
+    timer = Timer(30)
     while True:
         user_input = input(">>> ")
 
@@ -27,8 +27,8 @@ if __name__ == "__main__":
         except SystemExit:
             continue
         
-        if args.command == "length":
-            timer = Timer(args.seconds)
+        if args.command == "set":
+            timer.set_time(args.seconds)
         elif args.command == "start":
             timer.start()
         elif args.command == "stop":

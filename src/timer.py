@@ -1,7 +1,7 @@
 
 import threading
 import winsound
-from time import perf_counter, sleep
+from time import perf_counter
 
 
 class Timer:
@@ -10,7 +10,7 @@ class Timer:
         self.time_left = time
         self.ticking = False
     
-    def _completed(self) -> True:
+    def _completed(self) -> None:
         self.time_left = self.time
         self.ticking = False
         for _ in range(5):
@@ -37,8 +37,13 @@ class Timer:
         if self.ticking:
             self._delay_timer.cancel()
         self.time_left = self.time
-        ticking = False
+        self.ticking = False
     
     def get_time_left(self) -> None:
         self._update_timer()
         return self.time_left
+    
+    def set_time(self, time: int) -> None:
+        self.time = time
+        if not self.ticking:
+            self.time_left = time
