@@ -1,7 +1,7 @@
 
 import argparse
 import sys
-from timer import Timer
+from timers import PomodoroTimer
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     """
     print(help)
 
-    timer = Timer(30)
+    timer = PomodoroTimer(10, 3)
     while True:
         user_input = input(">>> ")
 

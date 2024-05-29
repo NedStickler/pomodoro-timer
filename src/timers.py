@@ -1,11 +1,11 @@
 
 import threading
 import winsound
-from time import perf_counter
+from time import perf_counter, sleep
 
 
 class Timer:
-    def __init__(self, time: int = 10) -> None:
+    def __init__(self, time: int = 60) -> None:
         self.time = time
         self.time_left = time
         self.ticking = False
@@ -47,3 +47,25 @@ class Timer:
         self.time = time
         if not self.ticking:
             self.time_left = time
+    
+
+class PomodoroTimer(Timer):
+    def __init__(self, work, brk) -> None:
+        super().__init__(work)
+        self.work = work
+        self.brk = brk
+        self.current = "work"
+    
+    def _completed(self) -> None:
+        self.ticking = False
+        if self.current == "work":
+            self.time_left = self.brk
+            self.current = "break"
+            for _ in range(5):
+                winsound.Beep(880, 300)
+        else:
+            self.time_left = self.work
+            self.current = "work"
+            for _ in range(3):
+                winsound.Beep(440, 500)
+    
