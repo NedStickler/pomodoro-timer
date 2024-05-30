@@ -1,2 +1,2 @@
 # Pomodoro Timer
-A configurable pomodoro timer built using the Python standard library.
+A configurable pomodoro timer built with the Python standard library.
