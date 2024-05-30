@@ -52,6 +52,7 @@ class Timer:
         if not self.ticking:
             self.time = time
             self.time_left = time
+        self._update_timer()
     
 
 class PomodoroTimer(Timer):
