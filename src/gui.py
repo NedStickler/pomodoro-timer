@@ -6,7 +6,7 @@ from timers import PomodoroTimer
 
 def update_category():
     if timer.current == "work":
-        timer_colour = "#5DADE2"
+        timer_colour = "#F96261"
     else:
         timer_colour = "#28B463"
     category.config(text=timer.current.title(), bg=timer_colour, fg="white")
@@ -14,7 +14,7 @@ def update_category():
 
 def update_time():
     if timer.current == "work":
-        timer_colour = "#5DADE2"
+        timer_colour = "#F96261"
     else:
         timer_colour = "#28B463"
     time.config(text=str(datetime.timedelta(seconds=int(timer.get_time_left()))), bg=timer_colour, fg="white")
@@ -56,9 +56,10 @@ if __name__ == "__main__":
     # Root window setup
     root = Tk()
     root.geometry("240x210")
-    root.title("Pomodoro Timer")
+    root.title("Pomodoro")
     root.resizable(False, False)
-    root.configure(bg="#273746")
+    # root.configure(bg="#273746")
+    root.iconbitmap("C:\\Users\\nedst\\Documents\\Projects\\pomodoro-timer\\assets\\tomato.ico")
     
     # Setup frames to act as parent widgets
     timer_buttons_frame = Frame(root)
@@ -66,7 +67,7 @@ if __name__ == "__main__":
     set_time_frame = Frame(root)
 
     timer = PomodoroTimer(1500, 300)
-    timer_colour = "#5DADE2"
+    timer_colour = "#F96261"
 
     # Work/break label and timer
     category = Label(root, text=timer.current.title(), font=("Century Gothic", 18), bg=timer_colour, fg="white")
