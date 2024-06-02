@@ -1,5 +1,7 @@
 
+import os
 import datetime
+from dotenv import load_dotenv
 from tkinter import *
 from timers import PomodoroTimer
 
@@ -58,8 +60,8 @@ if __name__ == "__main__":
     root.geometry("240x210")
     root.title("Pomodoro")
     root.resizable(False, False)
-    # root.configure(bg="#273746")
-    root.iconbitmap("C:\\Users\\nedst\\Documents\\Projects\\pomodoro-timer\\assets\\tomato.ico")
+    load_dotenv("..")
+    root.iconbitmap(os.getenv("REPO_PATH") + r"assets\tomato.ico")
     
     # Setup frames to act as parent widgets
     timer_buttons_frame = Frame(root)
